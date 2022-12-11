@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "81620279507",
+    "project_id": "myfix-36aa5",
+    "storage_bucket": "myfix-36aa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81620279507:android:e492a12bdb7f5d4077f426",
+        "android_client_info": {
+          "package_name": "com.example.myfix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81620279507-f7jlm1lvbvveraakm2tfp6k9a9sl14m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2FbAaHiQjWwJPGiyCZA9QoGkfmkI9b_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81620279507-f7jlm1lvbvveraakm2tfp6k9a9sl14m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
