@@ -29,7 +29,7 @@ public class addPoint extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_point);
+        setContentView(R.layout.activity_add_point);
 
         DB = FirebaseDatabase.getInstance().getReference("User");
 
