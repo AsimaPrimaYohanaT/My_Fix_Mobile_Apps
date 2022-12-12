@@ -83,6 +83,7 @@ public class camera extends AppCompatActivity {
                     TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
                     Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
 //                    TensorBuffer inputFeature0 = var24;
+//                    bytebuffer can also be replaced with TensorImage.fromBitmap(bitmap).getBuffer()
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3);
                     byteBuffer.order(ByteOrder.nativeOrder());
                     int[] intValues = new int[imgSize * imgSize];
@@ -101,6 +102,7 @@ public class camera extends AppCompatActivity {
                             byteBuffer.putFloat((float)(val & 255) * 0.003921569F);
                         }
                     }
+
 
                     inputFeature0.loadBuffer(byteBuffer);
                     Model4.Outputs outputs = model.process(inputFeature0);
