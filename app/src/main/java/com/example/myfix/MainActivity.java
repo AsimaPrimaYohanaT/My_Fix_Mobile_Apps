@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validateUsername(String Username){
         if(Username.isEmpty()){
-            getUsername.setError("Please enter email!");
+            getUsername.setError("Please enter username!");
             getUsername.requestFocus();
             return false;
         }
