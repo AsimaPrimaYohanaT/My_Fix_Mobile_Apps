@@ -80,21 +80,22 @@ public class camera extends AppCompatActivity {
         predictBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                model4.tflite
+                Bitmap scaledBmp = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
+                classifyImage(scaledBmp);
+            }
+
+            private void classifyImage(Bitmap image) {
                 try {
                     Model4 model = Model4.newInstance(camera.this);
-//                    Intrinsics.checkNotNullExpressionValue(model, "Model4.newInstance(camera.this)");
+                    Intrinsics.checkNotNullExpressionValue(model, "Model4.newInstance(applicationContext)");
 //                    Model4 model = var10000;
                     TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
-//                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
+                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
 //                    TensorBuffer inputFeature0 = var24;
-//                    bytebuffer can also be replaced with TensorImage.fromBitmap(bitmap).getBuffer()
-                    bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3);
-//                    ByteBuffer byteBuffer = TensorImage.fromBitmap(bitmap).getBuffer();
                     byteBuffer.order(ByteOrder.nativeOrder());
                     int[] intValues = new int[imgSize * imgSize];
-                    bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+                    image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                     int pixel = 0;
 //                    int var7 = 0;
 
@@ -112,23 +113,26 @@ public class camera extends AppCompatActivity {
 //                        int var9 = 0;
 //
 //                        for(maxPos = imgSize; var9 < maxPos; ++var9) {
-//
+//                            int val = intValues[pixel++];
+//                            byteBuffer.putFloat((float)(val >> 16 & 255) * 0.003921569F);
+//                            byteBuffer.putFloat((float)(val >> 8 & 255) * 0.003921569F);
+//                            byteBuffer.putFloat((float)(val & 255) * 0.003921569F);
 //                        }
 //                    }
                     inputFeature0.loadBuffer(byteBuffer);
 
-
                     Model4.Outputs outputs = model.process(inputFeature0);
-//                    Intrinsics.checkNotNullExpressionValue(outputs, "model.process(inputFeature0)");
+                    Intrinsics.checkNotNullExpressionValue(outputs, "model.process(inputFeature0)");
 //                    Outputs outputs = var25;
-//                    inputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
-//                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "outputs.outputFeature0AsTensorBuffer");
+//                    var24 = outputs.getOutputFeature0AsTensorBuffer();
+//                    Intrinsics.checkNotNullExpressionValue(var24, "outputs.outputFeature0AsTensorBuffer");
                     TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
                     float[] confidences = outputFeature0.getFloatArray();
-//                    Intrinsics.checkNotNullExpressionValue(confidences, "outputFeature0.floatArray");
+                    Intrinsics.checkNotNullExpressionValue(confidences, "outputFeature0.floatArray");
 //                    float[] confidences = var26;
                     int maxPos = 0;
                     float maxConfidence = -10.0F;
+//                    int i = 0;
 
                     for(int i = 0; i<confidences.length; i++){
                         if (confidences[i] > maxConfidence) {
@@ -136,11 +140,6 @@ public class camera extends AppCompatActivity {
                             maxPos = i;
                         }
                     }
-
-//                    for(int var13 = confidences.length; i < var13; ++i) {
-//
-//                    }
-
 
                     float petc = confidences[0];
                     float hdpec = confidences[1];
@@ -150,20 +149,16 @@ public class camera extends AppCompatActivity {
                     Log.d("confidences", "other: " + otherc);
                     Log.d("confidences", "maxcon: " + maxConfidence);
                     Log.d("confidences", "maxpos: " + maxPos);
-
                     String[] classes = new String[]{"PET", "HDPE", "Other"};
-                    String class_ = classes[0];
-                    class_ = classes[maxPos];
+                    String class_ = classes[maxPos];
                     Log.d("confidences", "CLASS: " + class_);
                     model.close();
 
-                    result.setText(class_);
+                    result.setText(classes[maxPos]);
 
-
-                } catch (IOException e) {
+                } catch (IOException var17) {
 //                    return "";
                 }
-
             }
         });
     }
