@@ -6,50 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".camera">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Image"
-        android:layout_below="@id/imageView"
-        android:id="@+id/selectBtn"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Capture"
-        android:layout_below="@+id/selectBtn"
-        android:id="@+id/captureBtn"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Predict"
-        android:layout_below="@id/captureBtn"
-        android:id="@+id/predictBtn"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-
     <TextView
+        android:id="@+id/result2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Jenis sampah"
-        android:id="@+id/result"
-        android:textSize="30dp"
-        android:layout_below="@id/predictBtn"
+        android:layout_below="@id/result"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
+        android:text="Jumlah Point"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"/>
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="227dp"
+        android:layout_height="230dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:background="@color/gray" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="227dp"
+        android:layout_height="230dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp" />
+
+
+
+    <Button
+        android:id="@+id/selectBtn"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Select Image" />
+
+    <Button
+        android:id="@+id/captureBtn"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectBtn"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginTop="10dp"
+        android:text="Capture" />
+
+    <Button
+        android:id="@+id/predictBtn"
+        android:layout_width="336dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/captureBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="Predict" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/predictBtn"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Jenis sampah"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAlignment="center"
+        android:textSize="30dp" />
 
 
 </RelativeLayout>

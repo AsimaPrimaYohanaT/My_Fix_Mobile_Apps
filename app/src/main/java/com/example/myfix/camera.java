@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myfix.ml.Model4;
 
@@ -35,8 +36,9 @@ import kotlin.jvm.internal.Intrinsics;
 public class camera extends AppCompatActivity {
 
     Button selectBtn, predictBtn, captureBtn;
-    TextView result;
+    TextView result,result2;
     ImageView imageView;
+    String temp_result;
     Bitmap bitmap;
     public int imgSize = 224;
 
@@ -52,6 +54,9 @@ public class camera extends AppCompatActivity {
         predictBtn = findViewById(R.id.predictBtn);
         captureBtn = findViewById(R.id.captureBtn);
         result = findViewById(R.id.result);
+        result2 =findViewById(R.id.result2);
+
+
         imageView = findViewById(R.id.imageView);
 
         selectBtn.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +89,9 @@ public class camera extends AppCompatActivity {
 //                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
 //                    TensorBuffer inputFeature0 = var24;
 //                    bytebuffer can also be replaced with TensorImage.fromBitmap(bitmap).getBuffer()
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3);
+//                    ByteBuffer byteBuffer = TensorImage.fromBitmap(bitmap).getBuffer();
                     byteBuffer.order(ByteOrder.nativeOrder());
                     int[] intValues = new int[imgSize * imgSize];
                     bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
@@ -134,6 +141,7 @@ public class camera extends AppCompatActivity {
 //
 //                    }
 
+
                     float petc = confidences[0];
                     float hdpec = confidences[1];
                     float otherc = confidences[2];
@@ -142,14 +150,20 @@ public class camera extends AppCompatActivity {
                     Log.d("confidences", "other: " + otherc);
                     Log.d("confidences", "maxcon: " + maxConfidence);
                     Log.d("confidences", "maxpos: " + maxPos);
+
                     String[] classes = new String[]{"PET", "HDPE", "Other"};
-                    String class_ = classes[maxPos];
+                    String class_ = classes[0];
+                    class_ = classes[maxPos];
                     Log.d("confidences", "CLASS: " + class_);
                     model.close();
+
                     result.setText(class_);
+
+
                 } catch (IOException e) {
 //                    return "";
                 }
+
             }
         });
     }

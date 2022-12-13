@@ -24,8 +24,8 @@ import org.w3c.dom.Text;
 
 public class profile extends AppCompatActivity {
 
-    private String nama,email;
-    private EditText getPoint,input_email;
+    private String nama,email, password;
+    private EditText getPoint,input_email, input_password;
     private String KEY_NAME = "NAMA";
     private DatabaseReference DB;
     TextView txtHello1, txtPointku, txtUsername, txtEmail, txtPassword;
@@ -38,22 +38,20 @@ public class profile extends AppCompatActivity {
         DB = FirebaseDatabase.getInstance().getReference("User");
 
         txtHello1 = (TextView) findViewById(R.id.txtHello);
-        txtUsername = (TextView) findViewById(R.id.editUsername);
         txtEmail = (TextView) findViewById(R.id.editEmail);
         txtPointku=(TextView) findViewById(R.id.jumlahPointku);
         Bundle extras = getIntent().getExtras();
         nama = extras.getString(KEY_NAME);
-        txtHello1.setText(" nama ");
         setter(nama);
+
+        txtHello1.setText("My Profile");
+
         setEmail(nama);
 //        setPassword(nama);
 
 
         getPoint = findViewById(R.id.jumlahPointTambah);
         input_email = findViewById(R.id.edittextusername);
-
-        ImageButton ubah = (ImageButton) findViewById(R.id.btnEditUsername);
-        ubah.setOnClickListener(selanjutnya);
 
         ImageButton ubah1 = (ImageButton) findViewById(R.id.btnEditEmail);
         ubah1.setOnClickListener(selanjutnya);
@@ -134,12 +132,27 @@ public class profile extends AppCompatActivity {
                 case R.id.btnEditEmail:
                     goEditEmail();
                     break;
-//                case R.id.btnEditPassword:
-//                    goEditPassword(nama, point);
-//                    break;
+                case R.id.btnEditPassword:
+                    goEditPassword();
+                    break;
             }
         }
     };
+
+    private void goEditPassword(){
+        LayoutInflater li = LayoutInflater.from(this);
+        View inputnya = li.inflate(R.layout.input_password, null);
+
+        AlertDialog.Builder dialognya = new AlertDialog.Builder(this);
+        dialognya.setView(inputnya);
+
+        input_password = (EditText) inputnya.findViewById(R.id.edittextpassword);
+
+        dialognya.setCancelable(false)
+                .setPositiveButton("Ok", oknya1)
+                .setNegativeButton("Batal", oknya1);
+        dialognya.show();
+    }
 
     private void goEditEmail(){
         LayoutInflater li = LayoutInflater.from(this);
@@ -164,6 +177,35 @@ public class profile extends AppCompatActivity {
                 case -2: break;
             }
         }
+    };
+
+    DialogInterface.OnClickListener oknya1 = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick (DialogInterface dialog, int which){
+            switch(which){
+                case -1: goPassword(nama, password); break;
+                case -2: break;
+            }
+        }
+    };
+
+    private void goPassword(String nama, String password) {
+
+        password = input_password.getText().toString();
+        String temp_password = password;
+        DB.child(nama).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //iFbmr = Float.parseFloat(String.valueOf(ibmr));
+
+                snapshot.getRef().child("password").setValue(temp_password);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     };
 
     private void goEmail(String nama, String email) {
