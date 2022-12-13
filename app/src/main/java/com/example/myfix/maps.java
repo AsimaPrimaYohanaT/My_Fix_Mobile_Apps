@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -154,15 +156,22 @@ public class maps extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng ITS = new LatLng(-7.28,112.79);
-        mMap.addMarker(new MarkerOptions().position(ITS).
-                title("Marker in ITS"));
+        MarkerOptions options3 = new MarkerOptions().position(ITS).title("Marker in its");
+        options3.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        mMap.addMarker(options3);
         LatLng Booth1 = new LatLng(-7.288,112.79);
-        mMap.addMarker(new MarkerOptions().position(Booth1).title("Marker in booth 1"));
+        MarkerOptions options = new MarkerOptions().position(Booth1).title("Marker in booth 1");
+        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        mMap.addMarker(options);
         LatLng Booth2 = new LatLng(-7.28,112.795);
-        mMap.addMarker(new MarkerOptions().position(Booth2).title("Marker in booth 1"));
+        MarkerOptions options1 = new MarkerOptions().position(Booth2).title("Marker in booth 2");
+        options1.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        mMap.addMarker(options1);
         LatLng Booth3 = new LatLng(-7.283,112.79);
-        mMap.addMarker(new MarkerOptions().position(Booth3).title("Marker in booth 1"));
+        MarkerOptions options2 = new MarkerOptions().position(Booth3).title("Marker in booth 2");
+        options2.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        mMap.addMarker(options2);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ITS,11));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ITS,20));
     }
 }

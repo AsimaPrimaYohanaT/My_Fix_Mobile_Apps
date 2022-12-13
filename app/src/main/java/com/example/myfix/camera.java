@@ -78,10 +78,10 @@ public class camera extends AppCompatActivity {
 //                model4.tflite
                 try {
                     Model4 model = Model4.newInstance(camera.this);
-                    Intrinsics.checkNotNullExpressionValue(model, "Model4.newInstance(camera.this)");
+//                    Intrinsics.checkNotNullExpressionValue(model, "Model4.newInstance(camera.this)");
 //                    Model4 model = var10000;
                     TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
-                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
+//                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "TensorBuffer.createFixed…24, 3), DataType.FLOAT32)");
 //                    TensorBuffer inputFeature0 = var24;
 //                    bytebuffer can also be replaced with TensorImage.fromBitmap(bitmap).getBuffer()
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3);
@@ -89,13 +89,10 @@ public class camera extends AppCompatActivity {
                     int[] intValues = new int[imgSize * imgSize];
                     bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
                     int pixel = 0;
-                    int var7 = 0;
+//                    int var7 = 0;
 
-                    int maxPos;
-                    for(int var8 = imgSize; var7 < var8; ++var7) {
-                        int var9 = 0;
-
-                        for(maxPos = imgSize; var9 < maxPos; ++var9) {
+                    for(int i = 0; i<imgSize; i++){
+                        for (int j = 0; j<imgSize; j++){
                             int val = intValues[pixel++];
                             byteBuffer.putFloat((float)(val >> 16 & 255) * 0.003921569F);
                             byteBuffer.putFloat((float)(val >> 8 & 255) * 0.003921569F);
@@ -103,27 +100,39 @@ public class camera extends AppCompatActivity {
                         }
                     }
 
-
+//                    int maxPos;
+//                    for(int var8 = imgSize; var7 < var8; ++var7) {
+//                        int var9 = 0;
+//
+//                        for(maxPos = imgSize; var9 < maxPos; ++var9) {
+//
+//                        }
+//                    }
                     inputFeature0.loadBuffer(byteBuffer);
-                    Model4.Outputs outputs = model.process(inputFeature0);
-                    Intrinsics.checkNotNullExpressionValue(outputs, "model.process(inputFeature0)");
-//                    Outputs outputs = var25;
-                    inputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
-                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "outputs.outputFeature0AsTensorBuffer");
-                    TensorBuffer outputFeature0 = inputFeature0;
-                    float[] var26 = outputFeature0.getFloatArray();
-                    Intrinsics.checkNotNullExpressionValue(var26, "outputFeature0.floatArray");
-                    float[] confidences = var26;
-                    maxPos = 0;
-                    float maxConfidence = -10.0F;
-                    int i = 0;
 
-                    for(int var13 = confidences.length; i < var13; ++i) {
+
+                    Model4.Outputs outputs = model.process(inputFeature0);
+//                    Intrinsics.checkNotNullExpressionValue(outputs, "model.process(inputFeature0)");
+//                    Outputs outputs = var25;
+//                    inputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+//                    Intrinsics.checkNotNullExpressionValue(inputFeature0, "outputs.outputFeature0AsTensorBuffer");
+                    TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+                    float[] confidences = outputFeature0.getFloatArray();
+//                    Intrinsics.checkNotNullExpressionValue(confidences, "outputFeature0.floatArray");
+//                    float[] confidences = var26;
+                    int maxPos = 0;
+                    float maxConfidence = -10.0F;
+
+                    for(int i = 0; i<confidences.length; i++){
                         if (confidences[i] > maxConfidence) {
                             maxConfidence = confidences[i];
                             maxPos = i;
                         }
                     }
+
+//                    for(int var13 = confidences.length; i < var13; ++i) {
+//
+//                    }
 
                     float petc = confidences[0];
                     float hdpec = confidences[1];
@@ -137,7 +146,7 @@ public class camera extends AppCompatActivity {
                     String class_ = classes[maxPos];
                     Log.d("confidences", "CLASS: " + class_);
                     model.close();
-                    result.setText(classes[maxPos]);
+                    result.setText(class_);
                 } catch (IOException e) {
 //                    return "";
                 }

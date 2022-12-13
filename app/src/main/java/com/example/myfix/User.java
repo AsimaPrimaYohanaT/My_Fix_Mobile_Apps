@@ -28,5 +28,6 @@ public class User {
     }
 
     public String getPoint(){
-        return point;}
+        return point;
+    }
 }

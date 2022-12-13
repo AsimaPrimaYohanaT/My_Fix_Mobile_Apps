@@ -32,6 +32,9 @@ public class dashboard extends AppCompatActivity {
 
         Button bScan = (Button) findViewById(R.id.btnCamera);
         bScan.setOnClickListener(go);
+
+        Button bProfile = (Button) findViewById(R.id.btnProfile);
+        bProfile.setOnClickListener(go);
     }
 
     View.OnClickListener go = new View.OnClickListener() {
@@ -41,6 +44,7 @@ public class dashboard extends AppCompatActivity {
                 case R.id.btnTambahPoint: bukaTambah(); break;
                 case R.id.btnmaps:bukaMaps();break;
                 case R.id.btnCamera:bukaCamera();break;
+                case R.id.btnProfile:bukaProfile();break;
             }
         }
 
@@ -57,6 +61,12 @@ public class dashboard extends AppCompatActivity {
 
         public void bukaCamera(){
             Intent intent = new Intent(getBaseContext(),camera.class);
+            startActivityForResult(intent,0);
+        }
+
+        public void bukaProfile(){
+            Intent intent = new Intent(getBaseContext(),profile.class);
+            intent.putExtra(KEY_NAME, nama);
             startActivityForResult(intent,0);
         }
     };

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_500"
-    tools:context=".register">
+    tools:context=".login">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/addEmail"
+                android:id="@+id/password"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
@@ -37,26 +37,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="206dp"
-                android:layout_marginEnd="30dp"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <EditText
-                android:id="@+id/addPassword"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="268dp"
                 android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="Password"
@@ -72,10 +52,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="88dp"
+                android:layout_marginStart="104dp"
                 android:layout_marginTop="68dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Register Form"
+                android:text="Login Form"
                 android:textSize="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.166"
@@ -84,7 +64,7 @@
                 tools:ignore="MissingConstraints" />
 
             <EditText
-                android:id="@+id/addUsername"
+                android:id="@+id/username"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
@@ -94,7 +74,7 @@
                 android:layout_marginTop="140dp"
                 android:layout_marginEnd="29dp"
                 android:ems="10"
-                android:hint="Username"
+                android:hint="username"
                 android:inputType="textPersonName"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +85,30 @@
                 app:layout_constraintVertical_bias="0.403" />
 
             <Button
-                android:id="@+id/btnRegis"
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="289dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.654" />
+
+            <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="338dp"
                 android:layout_height="58dp"
                 android:layout_alignParentStart="true"
