@@ -51,7 +51,7 @@ public class register extends AppCompatActivity {
     };
 
     private void goToSignIn(User data){
-        Intent toSignIn = new Intent(getApplicationContext(), com.example.myfix.login.class).putExtra("data", (Parcelable) data);
+        Intent toSignIn = new Intent(getApplicationContext(), login.class).putExtra("data", (Parcelable) data);
         startActivity(toSignIn);
     };
 
