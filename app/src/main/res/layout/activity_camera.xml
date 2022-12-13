@@ -4,82 +4,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_500"
     tools:context=".camera">
 
-    <TextView
-        android:id="@+id/result2"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/result"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="19dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="center"
-        android:text="Jumlah Point"
-        android:textAlignment="center"
-        android:textSize="30dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="227dp"
-        android:layout_height="230dp"
+        android:layout_height="881dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp"
-        android:background="@color/gray" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="227dp"
-        android:layout_height="230dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp" />
-
-
-
-    <Button
-        android:id="@+id/selectBtn"
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Select Image" />
-
-    <Button
-        android:id="@+id/captureBtn"
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/selectBtn"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppins_semibold"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
-        android:text="Capture" />
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-    <Button
-        android:id="@+id/predictBtn"
-        android:layout_width="336dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/captureBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:text="Predict" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/predictBtn"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Jenis sampah"
-        android:fontFamily="@font/poppins_semibold"
-        android:textAlignment="center"
-        android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/result2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/result"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Jumlah Point"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.929" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.077" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="227dp"
+                android:layout_height="230dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.089" />
+
+            <Button
+                android:id="@+id/selectBtn"
+                android:layout_width="302dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Select Image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.479"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555" />
+
+            <Button
+                android:id="@+id/captureBtn"
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/selectBtn"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Capture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.46"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.65" />
+
+            <Button
+                android:id="@+id/predictBtn"
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/captureBtn"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Predict"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.742" />
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/predictBtn"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Jenis sampah"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.843" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 
 </RelativeLayout>

@@ -156,6 +156,12 @@ public class camera extends AppCompatActivity {
 
                     result.setText(classes[maxPos]);
 
+                    String getResult = result.getText().toString();
+                    if(getResult =="PET"){
+                        result2.setText("10");
+                    }else if(getResult == "HDPE"){
+                        result2.setText("20");
+                    }
                 } catch (IOException var17) {
 //                    return "";
                 }
